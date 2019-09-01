@@ -49,7 +49,7 @@ use Homebrew, install OpenSSL and ensure they are available::
 
 This should ensure pip can install uWSGI::
 
-    $ LDFLAGS="-L/usr/local/opt/openssl/lib" pip install uwsgi --no-binary :all:
+    $ CFLAGS="-I/usr/local/opt/openssl/include" LDFLAGS="-L/usr/local/opt/openssl/lib" UWSGI_PROFILE_OVERRIDE=ssl=true pip install uwsgi -I --no-cache-dir
 
 If you plan to use the asyncio plugin, you'll need to ensure that it's enabled
 when uWSGI is compiled. You can use ``UWSGI_PROFILE`` to do this. With Homebrew Python 3.5 installed::
